@@ -1,0 +1,59 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto",
+    "bracketSpacing": true,
+    "delimiterSpacing": false,
+    "expand": "never",
+    "trailingNewline": true,
+    "useEditorconfig": true
+  },
+  "linter": {
+    "enabled": true,
+    "domains": { "react": "recommended" },
+    "rules": { "preset": "recommended" }
+  },
+  "assist": { "enabled": true, "actions": { "recommended": true } },
+  "javascript": {
+    "jsxRuntime": "transparent",
+    "parser": { "jsxEverywhere": false },
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "operatorLinebreak": "after"
+    },
+    "linter": { "enabled": true },
+    "assist": { "enabled": true }
+  },
+  "json": {
+    "parser": { "allowComments": true },
+    "formatter": { "enabled": true },
+    "linter": { "enabled": true },
+    "assist": { "enabled": true }
+  },
+  "css": {
+    "parser": { "cssModules": true, "tailwindDirectives": true },
+    "formatter": { "enabled": true, "quoteStyle": "single" },
+    "linter": { "enabled": true },
+    "assist": { "enabled": true }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": { "enabled": true },
+    "linter": { "enabled": true },
+    "assist": { "enabled": true }
+  }
+}
