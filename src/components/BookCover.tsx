@@ -21,7 +21,7 @@ const BookCover = ({ book }: BookCoverProps) => {
   };
 
   return (
-    <div className="relative aspect-7/10 w-12 self-center group-data-[expanded=true]:row-[1/4] group-data-[expanded=true]:w-52.5">
+    <div className="relative aspect-7/10 w-12 self-center group-data-[expanded=true]:row-[1/4] group-data-[expanded=true]:aspect-3/4 group-data-[expanded=true]:w-52.5">
       <img
         className="block size-full bg-[#f3f4f6] object-cover"
         src={book.thumbnail || iconBook}

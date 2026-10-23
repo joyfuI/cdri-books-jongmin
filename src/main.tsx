@@ -29,6 +29,7 @@ createRoot(root).render(
             colorPrimary: '#4880ee',
             colorText: '#353c49',
             colorTextSecondary: '#6d7582',
+            fontFamily: 'inherit',
             fontSizeHeading1: 24,
             fontSizeHeading2: 22,
             fontSizeHeading3: 18,

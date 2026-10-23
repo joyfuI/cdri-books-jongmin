@@ -13,7 +13,7 @@ const Header = () => {
       >
         CERTICOS BOOKS
       </Link>
-      <nav className="absolute left-1/2 -translate-x-1/2">
+      <nav className="absolute left-2/5">
         <Menu
           mode="horizontal"
           selectedKeys={[pathname]}

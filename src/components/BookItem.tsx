@@ -10,6 +10,7 @@ export type BookItemProps = { book: Book };
 const BookItem = ({ book }: BookItemProps) => {
   const [expanded, setExpanded] = useState(false);
   const salePrice = book.sale_price >= 0 ? book.sale_price : book.price;
+  const hasDiscount = salePrice < book.price;
 
   return (
     <li
@@ -33,21 +34,21 @@ const BookItem = ({ book }: BookItemProps) => {
         {expanded ? (
           <div className="mt-4">
             <h3 className="mb-3 text-sm font-bold">책 소개</h3>
-            <p className="text-xs leading-[1.9] break-keep wrap-anywhere">
+            <p className="text-xs leading-4 break-keep wrap-anywhere">
               {book.contents || '등록된 책 소개가 없습니다.'}
             </p>
           </div>
         ) : null}
       </div>
       <div className="text-right group-data-[expanded=true]:col-start-3 group-data-[expanded=true]:row-start-2 group-data-[expanded=true]:self-end">
-        {expanded ? (
+        {expanded && hasDiscount ? (
           <p className="mb-2 flex items-baseline justify-end gap-2 text-base whitespace-nowrap">
             <span className="text-[10px] text-[#8d94a0]">원가</span>
             <del>{book.price.toLocaleString()}원</del>
           </p>
         ) : null}
         <p className="flex items-baseline justify-end gap-2 whitespace-nowrap">
-          {expanded ? (
+          {expanded && hasDiscount ? (
             <span className="text-[10px] text-[#8d94a0]">할인가</span>
           ) : null}
           <strong className="text-lg font-bold">
@@ -68,6 +69,7 @@ const BookItem = ({ book }: BookItemProps) => {
         <Button
           className="h-12 w-28.75 flex-none gap-2 rounded-lg bg-[#f3f4f6] px-3 text-base text-[#6d7582] hover:bg-[#e9ebef] group-data-[expanded=true]:col-start-3 group-data-[expanded=true]:row-start-1 group-data-[expanded=true]:justify-self-end"
           type="text"
+          aria-expanded={expanded}
           onClick={() => setExpanded((oldExpanded) => !oldExpanded)}
         >
           상세보기
