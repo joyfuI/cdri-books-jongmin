@@ -1,4 +1,6 @@
-import { Typography } from 'antd';
+import { Pagination, Typography } from 'antd';
+import { parseAsInteger, useQueryState } from 'nuqs';
+import { useMemo } from 'react';
 
 import type { Book } from './api/getSearchBook';
 import BookItem from './components/BookItem';
@@ -8,7 +10,18 @@ import iconBook from './images/icon_book.png';
 const { Text, Title } = Typography;
 
 const Wishlist = () => {
+  const [page, setPage] = useQueryState(
+    'page',
+    parseAsInteger.withDefault(1).withOptions({ history: 'push' }),
+  );
   const [wishlist] = useLocalStorage<Book[]>('wishlist', []);
+
+  const currPage = Math.max(1, Math.min(page, Math.ceil(wishlist.length / 10)));
+
+  const sliceList = useMemo(
+    () => wishlist.slice((currPage - 1) * 10, currPage * 10),
+    [wishlist, currPage],
+  );
 
   return (
     <>
@@ -22,11 +35,22 @@ const Wishlist = () => {
         </span>
       </Text>
       {wishlist.length ? (
-        <ul className="mt-9 list-none p-0">
-          {wishlist.map((book) => (
-            <BookItem key={book.url} book={book} />
-          ))}
-        </ul>
+        <>
+          <ul className="mt-9 list-none p-0">
+            {sliceList.map((book) => (
+              <BookItem key={book.url} book={book} />
+            ))}
+          </ul>
+          <Pagination
+            className="mt-8 justify-center"
+            current={currPage}
+            pageSize={10}
+            total={wishlist.length}
+            showSizeChanger={false}
+            hideOnSinglePage
+            onChange={(page) => setPage(page)}
+          />
+        </>
       ) : (
         <div className="flex flex-col items-center gap-6 pt-30 text-[#6d7582]">
           <img src={iconBook} alt="책" width="80" height="80" />
