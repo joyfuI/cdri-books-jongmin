@@ -6,7 +6,7 @@
 
 ## 실행 방법 및 환경 설정
 
-`.env` 파일 생성 후 API 키 입력
+`.env` 파일 생성 후 다음 책검색 API 키 입력
 
 ```dotenv
 VITE_REST_API_KEY=<REST_API_KEY>
@@ -30,18 +30,21 @@ npm run preview
 
 ```text
 .
-└─ src/                      # 소스 코드
-   ├─ api/                   # API 코드
-   │  └─ getSearchBook.ts    # 다음 책검색 API
-   ├─ components/            # UI 컴포넌트
-   │  ├─ BookCover.tsx       # 책커버 이미지 컴포넌트(+찜하기)
-   │  ├─ BookItem.tsx        # 책 컴포넌트
-   │  └─ Header.tsx          # 헤더 컴포넌트
-   ├─ hooks/                 # 훅
-   │  └─ query/              # tanstack-query 훅
-   ├─ images/                # 아이콘 등 이미지
-   ├─ utils/                 # 범용 유틸리티
-   └─ router.tsx             # react-router 라우터 정의
+└─ src/                              # 소스 코드
+   ├─ api/                           # API 코드
+   │  └─ getSearchBook.ts            # 다음 책검색 API
+   ├─ components/                    # UI 컴포넌트
+   │  ├─ AdvancedSearchButton.tsx    # 상세검색 컴포넌트
+   │  ├─ BookCover.tsx               # 책커버 이미지 컴포넌트(+찜하기)
+   │  ├─ BookItem.tsx                # 책 컴포넌트
+   │  └─ Header.tsx                  # 헤더 컴포넌트
+   ├─ hooks/                         # 훅
+   │  └─ query/                      # tanstack-query 훅
+   ├─ images/                        # 아이콘 등 이미지
+   ├─ utils/                         # 범용 유틸리티
+   ├─ router.tsx                     # react-router 라우터 정의
+   ├─ Search.tsx                     # 도서 검색 페이지
+   └─ Wishlist.tsx                   # 내가 찜한 책 페이지
 ```
 
 ## 라이브러리 선택 이유
